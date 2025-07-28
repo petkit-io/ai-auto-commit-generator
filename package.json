@@ -4,7 +4,7 @@
   "description": "use ai to generate the commit message",
   "version": "0.1.9",
   "engines": {
-    "vscode": "^1.102.0"
+    "vscode": "^1.90.0"
   },
   "categories": [
     "Other"
