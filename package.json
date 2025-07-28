@@ -63,10 +63,10 @@
     "test": "vscode-test",
     "test:unit": "vscode-test",
     "test:watch": "vscode-test --watch",
-    "publish:package": "pnpx vsce package",
-    "publish:patch": "pnpx vsce publish patch",
-    "publish:minor": "pnpx vsce publish minor",
-    "publish:major": "pnpx vsce publish major"
+    "publish:package": "npx vsce package",
+    "publish:patch": "npx vsce publish patch && npm publish:package",
+    "publish:minor": "npx vsce publish minor && npm publish:package",
+    "publish:major": "npx vsce publish major && npm publish:package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
