@@ -62,9 +62,9 @@
     "test": "vscode-test",
     "test:unit": "vscode-test",
     "test:watch": "vscode-test --watch",
-    "publish:patch": "vsce publish patch",
-    "publish:minor": "vsce publish minor",
-    "publish:major": "vsce publish major"
+    "publish:patch": "pnpx vsce publish patch",
+    "publish:minor": "pnpx vsce publish minor",
+    "publish:major": "pnpx vsce publish major"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -77,7 +77,8 @@
     "@vscode/test-electron": "^2.5.2",
     "eslint": "^9.25.1",
     "sinon": "^19.0.5",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vsce": "^2.15.0"
   },
   "dependencies": {
     "@langchain/community": "^0.3.49",
