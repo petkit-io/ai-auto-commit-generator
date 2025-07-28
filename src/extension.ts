@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log(
-    'Congratulations, your extension "ai-commit-generator" is now active!'
+    'Congratulations, your extension "ai-auto-commit-generator" is now active!'
   );
 
   // Add error handling for extension activation
@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // 注册AI生成commit信息的命令
   const generateCommitCommand = vscode.commands.registerCommand(
-    'ai-commit-generator.generateCommit',
+    'ai-auto-commit-generator.generateCommit',
     async () => {
       // 创建CommitGenerator实例
       const commitGenerator = await new CommitGenerator();

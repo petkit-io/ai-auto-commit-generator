@@ -5,11 +5,13 @@ suite('Extension Test Suite', () => {
   vscode.window.showInformationMessage('Start all tests.');
 
   //   test('Extension should be present', () => {
-  //     assert.ok(vscode.extensions.getExtension('ai-commit-generator'));
+  //     assert.ok(vscode.extensions.getExtension('ai-auto-commit-generator'));
   //   });
 
   test('Extension should activate', async () => {
-    const extension = vscode.extensions.getExtension('ai-commit-generator');
+    const extension = vscode.extensions.getExtension(
+      'ai-auto-commit-generator'
+    );
     if (extension) {
       await extension.activate();
       assert.strictEqual(extension.isActive, true);
@@ -19,7 +21,7 @@ suite('Extension Test Suite', () => {
   //   test('Commands should be registered', async () => {
   //     const commands = await vscode.commands.getCommands(true);
   //     const hasGenerateCommitCommand = commands.includes(
-  //       'ai-commit-generator.generateCommit'
+  //       'ai-auto-commit-generator.generateCommit'
   //     );
   //     assert.strictEqual(hasGenerateCommitCommand, true);
   //   });

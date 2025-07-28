@@ -1,6 +1,6 @@
 {
-  "name": "ai-commit-generator",
-  "displayName": "Ai Commit Generator",
+  "name": "ai-auto-commit-generator",
+  "displayName": "Ai Auto Commit Generator",
   "description": "use ai to generate the commit message",
   "version": "0.1.7",
   "engines": {
@@ -11,14 +11,14 @@
   ],
   "publisher": "mantas-dima",
   "activationEvents": [
-    "onCommand:ai-commit-generator.generateCommit"
+    "onCommand:ai-auto-commit-generator.generateCommit"
   ],
   "icon": "images/logo.png",
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "ai-commit-generator.generateCommit",
+        "command": "ai-auto-commit-generator.generateCommit",
         "title": "AI生成Commit信息",
         "category": "Git",
         "icon": "$(code-review)"
@@ -27,7 +27,7 @@
     "menus": {
       "scm/title": [
         {
-          "command": "ai-commit-generator.generateCommit",
+          "command": "ai-auto-commit-generator.generateCommit",
           "when": "scmProvider == git",
           "group": "navigation"
         }
