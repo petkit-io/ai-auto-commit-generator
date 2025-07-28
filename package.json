@@ -21,7 +21,7 @@
         "command": "ai-auto-commit-generator.generateCommit",
         "title": "AI生成Commit信息",
         "category": "Git",
-        "icon": "$(code-review)"
+        "icon": "$(wand)"
       }
     ],
     "menus": {
@@ -38,13 +38,13 @@
       "properties": {
         "aiCommitGenerator.bailianApiKey": {
           "type": "string",
-          "default": "qwen-turbo-latest",
+          "default": "",
           "description": "阿里云百炼API Key",
           "scope": "resource"
         },
         "aiCommitGenerator.bailianModel": {
           "type": "string",
-          "default": "",
+          "default": "qwen-turbo-latest",
           "description": "阿里云百炼模型ID",
           "scope": "resource"
         }
