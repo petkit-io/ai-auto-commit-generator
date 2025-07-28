@@ -84,6 +84,7 @@
   "dependencies": {
     "@langchain/community": "^0.3.49",
     "@langchain/core": "^0.3.66",
-    "openai": "^5.10.2"
+    "ignore": "^5.0.0",
+    "openai": "^4.62.1"
   }
 }

@@ -55,10 +55,6 @@ pnpm run compile
 
 按 `F5` 启动扩展开发主机
 
-## Testing
-
-本项目包含完整的单元测试和集成测试。详细的测试文档请参见 [TEST.md](./TEST.md)。
-
 ### 运行测试
 
 ```bash
