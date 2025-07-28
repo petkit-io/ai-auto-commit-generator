@@ -1,0 +1,11 @@
+node_modules
+.kiro
+.cursor
+.claude
+.promptx
+.DS_*
+.vscode*
+.coverage
+out
+.c8*
+coverage
