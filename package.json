@@ -2,7 +2,7 @@
   "name": "ai-commit-generator",
   "displayName": "Ai Commit Generator",
   "description": "use ai to generate the commit message",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "engines": {
     "vscode": "^1.102.0"
   },
