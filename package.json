@@ -62,6 +62,7 @@
     "test": "vscode-test",
     "test:unit": "vscode-test",
     "test:watch": "vscode-test --watch",
+    "publish:package": "pnpx vsce package",
     "publish:patch": "pnpx vsce publish patch",
     "publish:minor": "pnpx vsce publish minor",
     "publish:major": "pnpx vsce publish major"
