@@ -39,7 +39,7 @@ Further paragraphs come after blank lines.
 `;
 
 export const getUserPrompt = (diff: string): string => `
-请你生成一段commit信息,相对简洁一些，不要太复杂。
+请你生成一段commit信息,相对简洁一些，不要太复杂。但必须使用中文来进行生成。
 改动内容如下：
 ${diff}
 `;

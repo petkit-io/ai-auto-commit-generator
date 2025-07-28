@@ -3,6 +3,7 @@
   "displayName": "Ai Auto Commit Generator",
   "description": "use ai to generate the commit message",
   "version": "0.1.11",
+  "repository": "",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -64,9 +65,9 @@
     "test:unit": "vscode-test",
     "test:watch": "vscode-test --watch",
     "publish:package": "npx vsce package",
-    "publish:patch": "npx vsce publish patch && npm publish:package",
-    "publish:minor": "npx vsce publish minor && npm publish:package",
-    "publish:major": "npx vsce publish major && npm publish:package"
+    "publish:patch": "npx vsce publish patch && npm run publish:package",
+    "publish:minor": "npx vsce publish minor && npm run publish:package",
+    "publish:major": "npx vsce publish major && npm run publish:package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
