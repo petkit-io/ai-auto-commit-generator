@@ -10,3 +10,6 @@ out
 .c8*
 coverage/
 *.vsix
+
+# Generated documentation files
+docs/vscode-extension-hello-world.md

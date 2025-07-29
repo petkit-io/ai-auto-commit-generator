@@ -51,7 +51,7 @@ export class CommitGenerator {
     return openai;
   }
 
-  async generateCommitMessage(): Promise<string | null> {
+  async generateCommitMessage(runtimeInfo: any): Promise<string | null> {
     console.log('generate', this.chatModel);
     if (!this.chatModel) {
       vscode.window.showErrorMessage('AI模型未初始化，请检查配置');
@@ -67,7 +67,12 @@ export class CommitGenerator {
       }
 
       const git = gitExtension.exports.getAPI(1);
-      const repository = git.repositories[0];
+      const repository =
+        git.repositories.find(
+          (repo: any) => repo.rootUri.path === runtimeInfo.rootUri.path
+        ) || git.repositories[0];
+
+      console.log('repository', repository);
 
       if (!repository) {
         vscode.window.showErrorMessage('未找到Git仓库');
@@ -84,6 +89,7 @@ export class CommitGenerator {
 
       // 获取diff内容
       const diffContent = await this.getStagedDiff(repository);
+      // console.log(diffContent);
 
       if (!diffContent) {
         vscode.window.showWarningMessage('无法获取diff内容');
@@ -103,13 +109,21 @@ export class CommitGenerator {
       const response = await this.chatModel.chat.completions.create({
         model: this.model,
         messages,
+        temperature: 0.1,
       });
+
+      const commitMessage = response.choices[0].message.content?.trim() || '';
+
+      repository.inputBox.value = commitMessage;
+      vscode.window.showInformationMessage(
+        `已生成commit信息: ${commitMessage}`
+      );
 
       // vscode.window.showInformationMessage(
       //   `生成commit信息: ${response.choices[0].message.content?.trim()}`
       // );
 
-      return response.choices[0].message.content?.trim() || null;
+      return commitMessage;
     } catch (error) {
       console.error('生成commit信息失败:', error);
       vscode.window.showErrorMessage('生成commit信息失败');

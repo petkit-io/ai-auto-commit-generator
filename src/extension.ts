@@ -24,57 +24,75 @@ export function activate(context: vscode.ExtensionContext) {
   // 注册AI生成commit信息的命令
   const generateCommitCommand = vscode.commands.registerCommand(
     'ai-auto-commit-generator.generateCommit',
-    async () => {
+    async (runtimeInfo: any) => {
       // 创建CommitGenerator实例
       const commitGenerator = await new CommitGenerator();
 
       try {
         vscode.window.showInformationMessage('正在生成commit信息...');
 
-        const commitMessage = await commitGenerator.generateCommitMessage();
+        await commitGenerator.generateCommitMessage(runtimeInfo);
 
-        if (commitMessage) {
-          // 获取Git扩展并设置commit信息
-          const gitExtension = vscode.extensions.getExtension('vscode.git');
-          if (gitExtension) {
-            const git = gitExtension.exports.getAPI(1);
-            const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
-            let repository = null;
+        // if (commitMessage) {
+        //   // 获取Git扩展并设置commit信息
+        //   const gitExtension = vscode.extensions.getExtension('vscode.git');
+        //   if (gitExtension) {
+        //     const git = gitExtension.exports.getAPI(1);
+        //     const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+        //     console.log('workspaceFolder', workspaceFolder);
+        //     let repository = null;
 
-            if (workspaceFolder) {
-              // 查找当前工作区对应的Git仓库
-              repository = git.repositories.find(
-                (repo: any) =>
-                  repo.rootUri.fsPath === workspaceFolder.uri.fsPath
-              );
+        //     // 尝试从当前活跃的编辑器获取仓库
+        //     const activeEditor = vscode.window.activeTextEditor;
+        //     if (!activeEditor) {
+        //       throw new Error('无法获取当前项目');
+        //     }
 
-              // 如果没有找到匹配的仓库，使用第一个可用的仓库
-              if (!repository && git.repositories.length > 0) {
-                repository = git.repositories[0];
-              }
-            }
+        //     // console.log('git.repositories', workspaceFolder, git.repositories);
+        //     if (workspaceFolder) {
+        //       // 查找当前工作区对应的Git仓库
+        //       // repository = git.repositories.find(
+        //       //   (repo: any) =>
+        //       //     repo.rootUri.fsPath === workspaceFolder.uri.fsPath
+        //       // );
+        //       repository = git.repositories.find(
+        //         (repo: any) => repo.ui.selected
+        //       );
+        //       // const activeDocument = activeEditor.document;
+        //       // repository = git.repositories.find(
+        //       //   (repo: any) => repo.rootUri.fsPath === activeDocument.uri.fsPath
+        //       // );
+        //       console.log('activeRepository', git.repositories);
 
-            if (repository) {
-              repository.inputBox.value = commitMessage;
-              vscode.window.showInformationMessage(
-                `已生成commit信息: ${commitMessage}`
-              );
-            } else {
-              // 如果无法直接设置到Git输入框，则显示给用户复制
-              vscode.window
-                .showInformationMessage(
-                  `生成的commit信息: ${commitMessage}`,
-                  '复制'
-                )
-                .then((selection) => {
-                  if (selection === '复制') {
-                    vscode.env.clipboard.writeText(commitMessage);
-                    vscode.window.showInformationMessage('已复制到剪贴板');
-                  }
-                });
-            }
-          }
-        }
+        //       console.log('selected repository', repository);
+
+        //       // 如果没有找到匹配的仓库，使用第一个可用的仓库
+        //       if (!repository && git.repositories.length > 0) {
+        //         repository = git.repositories[0];
+        //       }
+        //     }
+
+        //     if (repository) {
+        //       repository.inputBox.value = commitMessage;
+        //       vscode.window.showInformationMessage(
+        //         `已生成commit信息: ${commitMessage}`
+        //       );
+        //     } else {
+        //       // 如果无法直接设置到Git输入框，则显示给用户复制
+        //       vscode.window
+        //         .showInformationMessage(
+        //           `生成的commit信息: ${commitMessage}`,
+        //           '复制'
+        //         )
+        //         .then((selection) => {
+        //           if (selection === '复制') {
+        //             vscode.env.clipboard.writeText(commitMessage);
+        //             vscode.window.showInformationMessage('已复制到剪贴板');
+        //           }
+        //         });
+        //     }
+        //   }
+        // }
       } catch (error) {
         console.error('生成commit信息时出错:', error);
         vscode.window.showErrorMessage('生成commit信息失败');
