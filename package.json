@@ -3,7 +3,7 @@
   "displayName": "Ai Auto Commit Generator",
   "description": "use ai to generate the commit message",
   "version": "0.1.12",
-  "repository": "",
+  "repository": "https://github.com/petkit-io/ai-auto-commit-generator",
   "engines": {
     "vscode": "^1.90.0"
   },
